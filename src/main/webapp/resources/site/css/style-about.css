@@ -1,0 +1,376 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background:#141414;
+	color:white;
+}
+body{
+	background-image:url("../img/web-page-bg.jpg");
+	background-size:cover;
+	background-position:center;
+}
+
+.menu {
+    float: right;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: #00bff3;
+}
+
+a {
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    color: white;
+    text-align: center;
+}
+
+
+
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+header {
+    width: 100%;
+    height: 10vh;
+    background: black;
+}
+
+.content {
+    width: 100%;
+    margin:auto;
+    font-size: 20px;
+    line-height: 30px;
+	margin-top:5%;
+	
+	
+
+}
+
+
+.logo {
+    position: fixed;
+    margin: 16px 36px;
+}
+
+.logo img {
+    height: 6em;
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    transition: 1s;
+}
+
+nav.black ul {
+    background: #000;
+}
+
+nav ul li {
+    display: inline-block;
+
+    margin: 50px 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+
+
+}
+
+.menu-icon {
+    width: 100%;
+    background: #000;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    cursor: pointer;
+    color: #fff;
+    display: none;
+    margin: 25px 10px;
+}
+
+ul a:hover {
+    color: #00bff3;
+}
+
+.active {
+    color: #00bff3;
+}
+
+
+
+#navbar {
+    overflow: hidden;
+    background-color: black;
+    opacity: .9;
+}
+
+/* Navbar links */
+#navbar a {
+    display: block;
+    text-decoration: none;
+
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky+.content {
+    padding-top: 70px;
+}
+
+
+/*MEDIA QUERIES FOR MENU*/
+
+@media(max-width:900px) {
+    .logo {
+        position: fixed;
+        top: 0;
+        margin: 10px;
+
+    }
+
+    .menu {
+        float: none;
+
+    }
+
+    nav ul {
+        max-height: 0px;
+        background: #000;
+    }
+
+    nav.black ul {
+        background: #000;
+    }
+
+    .showing {
+        max-height: 21em;
+    }
+
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        background: black;
+        margin: 5px;
+
+
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
+
+
+
+
+/*FOOTER*/
+
+footer{
+	margin-top:100px;
+}
+footer p {
+    color: white;
+    padding: 10px 5px;
+    text-align: center;
+}
+
+footer a {
+    display: block;
+    padding: 10px;
+}
+
+
+#footer {
+    padding: 40px;
+    background-color: black;
+    height: 40%;
+    text-align: center;
+	clear: both;
+    position: relative;
+    margin-top: ;
+}
+
+#social {
+    display: inline-block;
+    margin: 30px;
+}
+
+
+/*For Jumbotron*/
+.jumbotron{
+	padding:100px;
+}
+.jumbotron {
+  background-image: url("../img/scissors.jpg");
+  background-size: cover;
+  background-position:center;
+}
+.display-4{
+	font-weight: bold;
+	font-size:8vw;
+}
+
+.sticky{
+	z-index:1;
+}
+
+/*End Jumbotron*/
+
+
+/*Styles For the Slide Show*/
+.carousel{
+	display:block;
+	margin:0 25% 5%;
+}
+.carousel-inner{
+	z-index: 0;
+	
+	width: 100%;
+}
+.carousel-item.active img{
+	object-fit: contain;
+	width:100%;
+}
+.carousel-item img {
+	object-fit: contain;
+	width: 100%;
+}
+.carousel{
+	z-index:0;
+	height:360px;
+	padding-bottom: 10px;
+	width: 50%;
+}
+.sticky{
+	z-index: 1;
+}
+.d-block.w-100 img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit:contain;
+}
+/*End Styles For SlideShow*/
+
+
+/*MEDIA QUERIES FOR SLIDESHOW*/
+@media(max-width:900px) {#carouselExampleSlidesOnly{
+	background-size:;
+	width: 100%;
+	margin:0;
+	float:right;
+	
+}
+.carousel-inner{
+	z-index: 0;
+margin:0;
+	width: 100%;
+}
+.carousel-item.active img{
+	object-fit: contain;
+width: 100%;
+margin:0;
+}
+.carousel-item img {
+	object-fit: contain;
+	width: 100%;
+	margin:0;
+}
+.carousel{
+	z-index:0;
+margin:0;
+	
+	width: 100%;
+}
+.sticky{
+	z-index: 1;
+}
+.d-block.w-100 img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin:;
+  object-fit:contain;
+}}
+/*End Styles For SlideShow*/
+
+#about-us{
+	margin:5% 25% ;
+	text-align:centre;
+	float:left;
+}
+
+#about-us h2{
+	margin-bottom:30px;
+	text-align:centre;
+	color:white;
+	font-weight:bold;
+	-webkit-text-stroke: 1px #00bff3;
+}
+
+@media(max-width:700px) {
+	#about-us {
+		margin:2%;
+		
+}}
+
+
+#download button{
+	margin:2% auto;
+	top:60%;
+	width:300px;
+	min-width:200px;
+	z-index:0;
+	background-color:#00bff3;
+	border:none;
+	  border-radius: 30px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+ font-size: 16px;
+display:block;}
+
+#download button:hover{
+	background-color:white;
+	color:#00bff3;
+	border: #00bff3;
+}
+

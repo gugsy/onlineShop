@@ -1,0 +1,517 @@
+html,
+body{
+	margin:0;
+	height: 100%;
+	background-color:black;
+	font-family: 'Roboto', sans-serif;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: #00bff3;
+}
+
+a {
+  color:white;
+  text-align:center;
+  font: 400 100px/1.3 'Oleo Script', Helvetica, sans-serif;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.1);;
+}
+
+
+/*header*/
+
+.header-bar{
+	position:fixed;
+	background-color:black;
+	width:100%;
+	padding:5px;
+	margin-right:5px;
+	z-index:2;
+}
+.header a,i{
+	
+	color:white;
+	text-decoration:none;
+	padding:0 10px 0 0;
+	font-size: .75rem;
+	float:right;
+	position:relative;
+}
+
+.header a:hover{
+	color:#00bff3;
+}
+
+.header i {
+	color:#00bff3;
+	
+	
+}
+
+.fa fa-phone{
+	color:#00bff3;
+}
+
+.fa fa-map-marker-alt{
+	color:#00bff3;
+	float:right;
+}
+
+.fa fa-map-marker-alt p{
+	font-size:1em;
+	color:white;
+}
+
+	
+
+ 
+ /*Fadein animation*/
+  animation: fadein 3s;
+  -moz-animation: fadein 3s; /* Firefox */
+  -webkit-animation: fadein 3s; /* Safari and Chrome */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.navbar a {
+  font: 400 100px/1.8 'Cookie', Helvetica, sans-serif;
+  font-size:4.5em;
+  color: #fff;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+  display: inline-block;
+  color: white;
+  padding: 12px;
+  text-decoration: none;
+  position:relative;
+  
+}
+
+.navbar a:hover {
+  -webkit-transform: scale(1.1);
+  color: #00bff3;
+}
+
+#central-logo{
+	position:absolute;
+    margin:0;
+    width: 30%;
+    top:7%;
+	left:33.33%;
+	
+	
+}
+
+
+.RNav{
+	display:block;
+	position:absolute;
+	top:33%;
+	right:7%;
+
+	
+}
+
+.LNav{
+	display:inline-block;
+	position:absolute;
+	top:33%;
+	left:5%;
+}
+
+
+
+/**/
+
+.logo-home-button img{
+	position:;
+	width:150px;
+	padding:5px;
+	top:2px;
+	left:2px;
+}
+
+.logo-home-button img:hover{
+	width:155px;
+}
+
+.nav-menu{
+	width:100%;
+	height:140px;
+	background-color:black;
+	
+}
+
+.nav-menu a{
+	text-decoration:none;
+	padding:20px;
+	color:white;
+	float:right;
+	font-family:Helvetica, sans-serif;
+	font-size:2em;
+}
+
+.nav-menu a:hover{
+	color:gold;
+	
+}
+
+
+
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: url("../img/home-bg.jpg");
+
+  /* Set a specific height */
+  height:40rem;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+
+}
+
+/*MEDIA QUERIES FOR MENU*/
+
+@media(min-width:1200px) {
+	header{
+		display:none;
+	}
+	
+}
+
+@media(max-width:1200px) {
+    .logo {
+        position: fixed;
+        top: 0;
+        margin: 10px;
+
+    }
+
+    .menu {
+        float: none;
+
+    }
+
+    nav ul {
+        max-height: 0px;
+        background: #000;
+    }
+
+    nav.black ul {
+        background: #000;
+    }
+
+    .showing {
+        max-height: 21em;
+    }
+
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        background: black;
+        margin: 5px;
+
+
+    }
+
+    .menu-icon {
+        display: block;
+    }
+	
+	.header-bar{
+		display:none;
+	}
+	
+	.RNav{display:none;}
+	.LNav{display:none;}
+	
+}
+
+#mobile-logo{height:40px;}
+
+#info {
+    background-color: rgba(0, 0, 0, 0.48);
+    padding: 50px;
+    margin: 10px auto;
+    color: #00bff3;
+}
+
+#info i {
+    padding: 20px 0;
+}
+
+
+/*FOOTER*/
+
+
+footer p {
+    color: white;
+    padding: 10px 5px;
+    text-align: center;
+}
+
+footer a {
+    display: block;
+    padding: 10px;
+}
+
+#footer {
+    padding: 40px;
+    background-color: black;
+    height: 40%;
+    text-align: center;
+}
+
+#social {
+    display: inline-block;
+    margin: 30px;
+}
+
+
+
+.logo {
+    position: fixed;
+    margin: 16px 36px;
+}
+
+.logo img {
+    height: 6em;
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    transition: 1s;
+}
+
+nav.black ul {
+    background: #000;
+}
+
+nav ul li {
+    display: inline-block;
+
+    margin: 50px 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+
+
+}
+
+.menu-icon {
+    width: 100%;
+    background: #000;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    cursor: pointer;
+    color: #fff;
+    display: none;
+    margin: 25px 10px;
+}
+
+ul a:hover {
+    color: #00bff3;
+}
+
+.active {
+    color: #00bff3;
+}
+
+
+
+#navbar {
+    overflow: hidden;
+    background-color: black;
+    opacity: .9;
+	z-index:2;
+	
+
+}
+
+/* Navbar links */
+#navbar a {
+    display: block;
+    text-decoration: none;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+	z-index:2;
+
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky+.content {
+    padding-top: 70px;
+}
+
+
+/*MEDIA QUERIES FOR MENU*/
+
+@media(max-width:1200px) {
+    .logo {
+        position: fixed;
+        top: 0;
+        margin: 10px;
+		display:none;
+    }
+#central-logo{
+	margin-top:7em;
+	z-index:-1;
+}
+
+.mobile-logo{
+	display: block;
+	margin:auto;
+	height:40px;
+}
+    .menu {
+        float: none;
+
+    }
+
+    nav ul {
+        max-height: 0px;
+        background: #000;
+    }
+
+    nav.black ul {
+        background: #000;
+    }
+
+    .showing {
+        max-height: 21em;
+    }
+
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        background: black;
+        margin: 5px;
+
+
+    }
+
+    .menu-icon {
+        display: block;
+    }
+	
+	
+}
+
+@media(max-width:1200px) {
+
+#mobile img{
+	position:absolute;
+	margin:0 25%;
+	top:25%;
+	width:50%;
+	z-index:0;
+}}
+
+#mobile button{
+	position:absolute;
+	margin:2% 25%;
+	top:60%;
+	width:50%;
+	min-width:150px;
+	z-index:0;
+	background-color:#00bff3;
+	border:none;
+	  border-radius: 30px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  display:block;
+}
+
+#mobile button:hover{
+	background-color:white;
+	color:#00bff3;
+	border: #00bff3;
+}
+
+@media(min-width:1200px) {
+	#mobile img{
+		display:none;
+}
+
+
+}
+@media(min-width:600px) {
+	#mobile button{
+		display:none;
+}
+}
+
+@media(max-width:600px) {
+	#mobile button{
+		margin:3% 25%;
+}
+
+
+
+
+
