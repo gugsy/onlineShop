@@ -82,15 +82,58 @@ public class ViewProducts {
         return total;
     }
     
-        
+ @RequestMapping(value="/checkOut", method = RequestMethod.POST)          
     public ModelAndView checkOut(HttpServletRequest request,HttpServletResponse response, ModelAndView model){
-        
+        List<Products> cart = new ArrayList<>();
       //  int total= AddTotal(request,response);
-        String email = request.getParameter("email");
+        System.out.println("eta from post");
+        String[] names = request.getParameterValues("itemName");
         
+        String[] quantities = request.getParameterValues("itemQuantity");
+        int[] integerQuantities = new int[quantities.length];
+        for(int x=0; x< quantities.length; x++){ 
+            integerQuantities[x] = Integer.parseInt(quantities[x]);
         
+        }
         
-    return model;
+        String[] prices = request.getParameterValues("itemPrice");
+        int[] integerPrices = new int[prices.length];
+        for(int x=0; x< prices.length; x++){ 
+            integerPrices[x] = Integer.parseInt(prices[x]);
+        
+        }
+        
+        String[] ids = request.getParameterValues("itemId");
+        int[] integerIDs = new int[ids.length];
+        for(int x=0; x< ids.length; x++){ 
+            integerIDs[x] = Integer.parseInt(ids[x]);
+        
+        }        
+        
+   for(int x=0; x< names.length; x++){  
+   Products prod=new Products();
+  //To be set
+  //prod.setProductId(productId);
+   ProductsJpaController pj=new ProductsJpaController();
+   Products a=pj.findProducts(integerIDs[x]);
+   prod.setProductId(a.getProductId());
+   prod.setDescription(a.getDescription());
+   prod.setPrice(a.getPrice());
+   prod.setProductName(a.getProductName());
+   prod.setQuantity(integerQuantities[x]);
+   cart.add(prod);
+   }
+   
+        HttpSession session1 = request.getSession(false);
+        System.out.println("GGGGGGGGGG"+session1);
+        
+        System.out.println("etagg from post"+names[0]);
+        System.out.print("nazo"+names);
+
+        return dispatch(cart, session1,model);
+    
+        
+    //return model;
     
     }
     

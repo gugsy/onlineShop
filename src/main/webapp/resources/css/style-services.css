@@ -64,7 +64,12 @@ header {
     position: fixed;
     margin: 16px 36px;
 }
-
+.shopLogo{
+    padding-left: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 15%;
+}
 .logo img {
     height: 6em;
 }
@@ -151,6 +156,14 @@ ul a:hover {
     padding-top: 70px;
 }
 
+.mother_class {
+    width: 25%;
+    display: block;
+    overflow-x: auto;
+}
+
+
+
 
 /*MEDIA QUERIES FOR MENU*/
 
@@ -162,6 +175,14 @@ ul a:hover {
 
     }
 
+    .mother_class{
+        display: block;
+        overflow-x: auto;
+        width: 60%;
+        margin: 0px auto;
+}
+    }
+    
     .menu {
         float: none;
 
@@ -348,6 +369,11 @@ body#checkout-page #site-info {
 	font-size: 2.5em;
 	display: block;
 	text-align: center;
+}
+.cart-location{
+    width: 75%;
+    padding-left: 75%;
+    padding-top: 10px;
 }
 
 #shopping-cart-actions {

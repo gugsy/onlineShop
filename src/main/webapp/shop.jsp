@@ -11,7 +11,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		
+
+    <!--- ma resourcse -->
+        <!-- Bootstrap Core CSS -->
+    <link href="resources/ma/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="resources/ma/css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="resources/ma/css/colors/green.css" id="theme" rel="stylesheet">
+    <!-- ma resources end-->
+    
+    
         <link rel="stylesheet" href="resources/css/all.css"> 
         <link rel="icon" href="img/favicon.png">
 		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
@@ -56,7 +66,8 @@ $(function() { // document ready
 			if (stickyTop < windowTop) {
 				el.css({
 					position: 'fixed',
-					top: 0
+					top: 0,
+                                        right: 0
 				});
 			} else {
 				el.css('position', 'static');
@@ -77,119 +88,29 @@ $(function() { // document ready
 </head>
 
 <body>
-    <!-- Search Wrapper Area Start -->
-    <div class="search-wrapper section-padding-100">
-        <div class="search-close">
-            
-            <!-- float -->
-            
-            <!--end foatl -->
-            
-            
-            <i class="fa fa-close" aria-hidden="true"></i>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="search-content">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
-                            <button type="submit"><img src="resources/img/core-img/search.png" alt=""></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Search Wrapper Area End -->
 
+        <div class="row header-top">
+            
+                                  
+            <div class="shopLogo">
+                        <img src="resources/img/core-img/logo.png" alt="">
+
+            </div>
+              <!-- cart start-->
+            <!-- --cart end_-->
+            
+    </div>
+    
     <!-- ##### Main Content Wrapper Start ##### -->
+<div class="row">
     <div class="main-content-wrapper d-flex clearfix">
 
-        <!-- Mobile Nav (max width 767px)-->
-        <div class="mobile-nav">
-            <!-- Navbar Brand -->
-            <div class="amado-navbar-brand">
-                <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
-            </div>
-            <!-- Navbar Toggler -->
-            <div class="amado-navbar-toggler">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
 
-        <!-- Header Area Start -->
-        <header class="header-area clearfix">
-            <!-- Close Icon -->
-            <div class="nav-close">
-                <i class="fa fa-close" aria-hidden="true"></i>
-            </div>
-            <!-- Logo -->
-<!-- -->
- <div id="sticky">         
-          
-    <div>
-<form action="${pageContext.request.contextPath}/add" method="post"> 
-       <table class="table table-responsive" tabindex="1" style="overflow: hidden; outline: none;" id="tee"> 
-           <thead> <tr> <th>Item ID</th> <th>Name</th> <th>Quantity</th> <th>Price</th> <th>Total</th></tr> 
-           </thead>
-           <tbody id="floater">
-               
-       </tbody> 
-       </table>        
-        <button>Submit</button>
-</form>                            
-    </div>                           
-
-                              
-                                                       
-<div class="col-12 col-lg-12" >
-
-                      <a href="${pageContext.request.contextPath}/updateCart" class="btn">Update Cart</a>
-
-
-                  <a href="${pageContext.request.contextPath}/clearCart" class="btn">Clear Cart</a>                 
-  
-  
-                  <a href="${pageContext.request.contextPath}/viewProducts" class="btn">Continue Shopping</a>
-                 
-   
         
-</div>
- 
- </div>   
-<!-- -->
-            <!-- Amado Nav -->
-            <nav class="amado-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li><br>
-                    <!--<li class="active">--><li><a href="shop.html">Shop</a></li>
-                    <li><a href="product-details.html">Product</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
-                </ul>
-            </nav>
-            <!-- Button Group -->
-            <div class="amado-btn-group mt-30 mb-100">
-                <a href="#" class="btn amado-btn mb-15">%Discount%</a>
-                <a href="#" class="btn amado-btn active">New this week</a>
-            </div>
-            <!-- Cart Menu -->
-            <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
-                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
-                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
-            </div>
-            <!-- Social Button -->
-            <div class="social-info d-flex justify-content-between">
-                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            </div>
-        </header>
-        <!-- Header Area End -->
-        <div class="shop_sidebar_area">
+
+<!-- start of side panel -->
+
+        <div class="shop_sidebar_area" style="width: 20%">
 
             <!-- ##### Single Widget ##### -->
             <div class="widget catagory mb-50">
@@ -280,8 +201,11 @@ $(function() { // document ready
                 </div>
             </div>
         </div>
+<!-- rend of side panel -->
 
-        <div class="amado_product_area section-padding-100">
+        <!-- start of product_area -->
+        
+        <div class="amado_product_area" style="width: 50%">
             <div class="container-fluid">
 
                 <div class="row">
@@ -377,7 +301,7 @@ $(function() { // document ready
 						<div class="input-group">
 								<input type="hidden" class="itemID${count}" value="${id}">
                             <!--	<input type="text" placeholder="Quantity" name= "quantity" class="form-control"> -->
-                            <input type="text" class="itemQuantiy${count}" placeholder="Quantity">
+                            <input type="text" class="itemQuantiy${count} inputQuantitities" placeholder="Quantity">
 								<input type="hidden" class="itemPrice${count}" value="${lines.getPrice()}">
 								<input type="hidden" class="itemName${count}" value="${lines.getProductName()}">
                         </div>
@@ -428,7 +352,69 @@ $(function() { // document ready
                 </div>
             </div>
         </div>
+        <!-- end of product area -->
+                    
+       <!-- start of cart region -->
+             <!--       <div class="cart_region" style="width: 25%">
+    <div>
+<form action="${pageContext.request.contextPath}/add" method="post"> 
+    <div class="table-responsive">
+       <table class="table table-striped" tabindex="1" style="overflow: hidden; outline: none;" id="tee"> 
+          <!-- <thead> <tr> <th>Item ID</th> <th>Name</th> <th>Quantity</th> <th>Price</th> <th>Total</th></tr> -->
+  <!--                   <thead> <tr> <th>Name</th> <th>Quantity</th> <th>Price</th></tr> 
+           </thead>
+           <tbody id="floater">
+               
+       </tbody> 
+       </table> 
     </div>
+        <button>Submit</button>
+</form>                            
+    </div>  
+   
+                        
+                    </div> -->
+  
+  <div class="mother_class">
+      
+      <!--start of form-->
+      
+      <form action="${pageContext.request.contextPath}/checkOut" method="post"> 
+      
+                                    <table class="table table-striped cartTableArea tee">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Quantity</th>
+                                                <th class="text-nowrap">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="floater">
+                                        </tbody>
+                                    </table>
+      <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Total</th>
+                                                <th id="totalField">0</th>
+                                            </tr>
+                                        </thead>
+      </table>
+      <div class="col-12 col-lg-12" id="shopping-cart-actions">
+       <button class="btn" style="font-size: 1rem; padding: 5px;">Checkout</button>                
+    <!-- ${pageContext.request.contextPath}/    <a href="/shop/checkout" class="btn" style="font-size: 1rem; padding: 5px;">Checkout</a> -->
+        <a class="btn clearCart" style="font-size: 1rem; color: white; padding: 5px;">Clear Cart</a>   </br></br>              
+  <!--  <a href="/shop/viewProducts" class="btn" style="font-size: 1rem;">Continue Shopping</a> -->
+   
+                         
+</div>
+  </form>
+        <!--end of form -->
+        
+                                </div>
+       <!-- end of cart region--> 
+    </div>
+</div>
     <!-- ##### Main Content Wrapper End ##### -->
 
     <!-- ##### Newsletter Area Start ##### -->
@@ -457,28 +443,6 @@ $(function() { // document ready
     <!-- ##### Newsletter Area End ##### -->
     
 
-    <!--  cart items-->
-      
-    <div>
-        
-    <input type="text" class="itemID" placeholder="Id">
-
-    
-
-    <input type="text" class="itemName" placeholder="Name">
-
-
-
-    <input type="text" class="itemQuantiy" placeholder="Quantity">
-
-        <input type="text" class="itemPrice" placeholder="Price">
-
-    
-    <button class="add__btn"><i class="ion-ios-checkmark-outline" style="width: 25px; height: 25px"></i></button>
-
-</div>
-
-  <!---end cart items -->
   
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer_area clearfix">
@@ -542,6 +506,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- Plugins js -->
     <!-- Active js -->
         <script src="resources/js/app.js"></script>
+
+        <!-- ma drpdown cart events -->
+    <script src="resources/ma/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="resources/ma/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="resources/ma/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="resources/ma/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="resources/ma/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="resources/ma/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="resources/ma/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="resources/ma/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="resources/ma/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
 
 </body>
 

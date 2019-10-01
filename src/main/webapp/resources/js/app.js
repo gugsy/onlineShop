@@ -14,67 +14,72 @@ var budgetController = (function() {
     
    var itemLists = []; 
 
-   var sum=0;
+   var sum=parseInt(0);
+  // var num=parseInt(0);
     var allItems = {
             items: [],
-            total: 0
+            total: 0,
+           // itemNum: 0
         };
     
     
     return {
         addItem: function(id, name, quantity, price) {
             console.log('now appending to cart khathesi');
-            newItem = new item(id, name, quantity, price);
+            newItem = new item(id, name, parseInt(quantity), parseInt(price));
             var notThere =true;
+            
+            //if not empty
+            if(itemLists.length>0){
+                console.log('itemLists is not emptyyyyyyyyy'+itemLists.length);
+                for(var f=0; f<itemLists.length; f++){
+                    console.log('items in list');
+                    console.log(itemLists[f].name);
+                    console.log(itemLists[f].id);
+     
+                    
+                }
+                
+                for(var f=0; f<itemLists.length; f++){
+                    
+                    if(itemLists[f].id==newItem.id){
+                       console.log(itemLists[f].id+' is equal to '+newItem.id);
+                       itemLists[f].quantity= itemLists[f].quantity+newItem.quantity;
+                       notThere=false;
+                    }
+                    }
+                }
+                
+          
+            if(notThere){
+                console.log('itemLists is not empty');
+
+                // store in tank
+            itemLists.push(newItem);
             
             // Push it into our data structure
             console.log(notThere);
-            console.log('does new element id exist');
-            //console.log(allItems.items.includes(newItem));
-            allItems.items.push(newItem);
+            console.log('new itemList is'+itemLists);
+        }
+        
+       allItems.items = itemLists;
+    
 
-            //then its the first itmes
-            if(allItems.items.length==1){
-                console.log('length is one so pushed');
+        console.log('trial');
 
-            }
-            else{
-
-                //pop it
-                allItems.items.pop();
-
-                //check if already exists
-                for(var d=0; d<allItems.items.length; d++){
-                    if(allItems.items[d].itemID==newItem.itemID){
-                        console.log('now replacing'+d)
-                        notThere=false;
-                        allItems.items[d]=newItem;
-                        // replace adjacent
-                    }
-                    //console.log(allItems.items[d].itemID+'no equal to'+newItem.itemID);
-                }
-
-            }
-
-
-       /*     if(allItems.itemID.length>0){
-            console.log('does new element exist');
-            console.log(allItems.items.includes(newItem));
-            for(var d=0; d<allItems.items.length; d++){
-                if(allItems.items[d].itemID==newItem.itemID){
-                    notThere=false;
-                }
-                console.log(allItems.items[d].itemID+'no equal to'+newItem.itemID);
-            }
-        }*/
-      //  sum = sum+newItem.itemPrice;
-        console.log('sum now is'+sum)
-        console.log('new item'+newItem.itemPrice)
-
-          allItems.total=0;
+        console.log('sum now contains :'+sum);
+        console.log('new item is: '+newItem.price)
+    //    num=num+1;
+    //    console.log('item num is'+num);
                   //allItems.total+newItem.itemPrice;
          // console.log(newItem).itemPrice;
-         //   console.log(allItems.items);
+         console.log('your cart ffgfg');
+            console.log(allItems.items);
+            sum = budgetController.calculateTotal(allItems.items);
+            //sum+newItem.price*newItem.quantity;
+            allItems.total=sum;
+            budgetController
+            //allItems.itemNum=num;
             // Return the new element
             return allItems;
         },
@@ -93,7 +98,22 @@ var budgetController = (function() {
             }
             
         },
+
+        removeAllData: function() {
+            sum=parseInt(0);
+            itemLists = [];
+            console.log('empty itemLists'+itemLists);
+        },
         
+        calculateTotal: function(its){
+            var tot=0;
+            console.log('ivaar yikuthi');
+            console.log('calcualting total for: '+its.length+'items')
+            for(q=0; q<its.length; q++){
+               tot = tot+ (its[q].price*its[q].quantity);
+            }
+            return tot;
+        },
         
         calculateBudget: function() {
             
@@ -113,6 +133,23 @@ var budgetController = (function() {
             
             // Expense = 100 and income 300, spent 33.333% = 100/300 = 0.3333 * 100
         },
+
+
+        //Fetch the current item list
+        getItemList: function(){
+            return itemLists;
+        },
+
+
+        //Delete item selected
+        deleteFromList: function(lists, i){
+            console.log('passed size: '+lists.length);
+            lists.splice(i, 1); 
+            console.log('final array size: '+lists.length);
+            itemLists.items = lists;
+            return lists;
+        },
+
         
         calculatePercentages: function() {
             
@@ -158,7 +195,6 @@ var budgetController = (function() {
 
 // UI CONTROLLER
 var UIController = (function() {
-    
     var DOMstrings = {
         itemID: '.itemID',
         itemName: '.itemName',
@@ -166,7 +202,11 @@ var UIController = (function() {
         itemPrice: '.itemPrice',
         inputBtn: '.add__btn',
         floatContainer: '#floater',
-        catSize: '.catalogueSize'
+        catSize: '.catalogueSize',
+        totalField: '#totalField',
+        mother: '.cartTableArea',
+        clearCart: '.clearCart',
+        inputQuant:'.inputQuantitities'
     };
     
     
@@ -217,39 +257,63 @@ var UIController = (function() {
         console.log('updating UI'+DOMstrings.floatContainer);
                 element = DOMstrings.floatContainer;
      
-            console.log(obj.items[0].quantity);
             console.log('items length :'+obj.items.length);
+  //          console.log('item name'+obj.items[0].name);
             
+            console.log("clear inner html");
+
+          /*  var para = document.createElement('p');
+            para.id = 'tttt'; */
             
-            console.log("sekutshintshile");    
-            var itemHtml = '<tr> <td><input type="hidden" name="itemId" value="%id%">%id%</td><input type="hidden" name="itemName" value="%name%"> <td>%name%</td> <td><input type="hidden" name="itemQuantity" value="%quantity%">%quantity%</td> <td><input type="hidden" name="itemPrice" value="%price%">%price%</td> <td>%total%</td> </tr>';                
-                
+            console.log('inner HTMLs');
+
+// to remove all child nodes
+document.querySelector(element).innerHTML='';
+console.log('fgfgfg now replacing fields');
+
+            
+            for(var w=0; w<obj.items.length; w++){
+            var itemHtml = '<tr id="'+w+'"> <input type="hidden" name="itemId" value="%id%"> <td><input type="hidden" name="itemName" value="%nameVal%">%name%</td> <td><input type="hidden" name="itemQuantity" value="%quantityVal%">%quantity%</td> <td><input type="hidden" name="itemPrice" value="%priceVal%">%price%</td> <td><button><i class="fa fa-times" aria-hidden="true"></i></button></td></tr>';                
+            //td><input type="hidden" name="itemId" value="%id%">%id%</td>    
             // Replace the placeholder text with some actual data
-            itemHtml = itemHtml.replace('%id%', obj.items[obj.items.length-1].id);
-            itemHtml = itemHtml.replace('%name%', obj.items[obj.items.length-1].name);
-            itemHtml = itemHtml.replace('%quantity%', obj.items[obj.items.length-1].quantity);
-            itemHtml = itemHtml.replace('%price%', obj.items[obj.items.length-1].price);
-            itemHtml = itemHtml.replace('%total%', obj.items[obj.items.length-1].total);            
+            itemHtml = itemHtml.replace('%id%', obj.items[w].id);
+            itemHtml = itemHtml.replace('%nameVal%', obj.items[w].name);
+            itemHtml = itemHtml.replace('%quantityVal%', obj.items[w].quantity);
+            itemHtml = itemHtml.replace('%priceVal%', obj.items[w].price);
+            itemHtml = itemHtml.replace('%totalVal%', obj.items[w].total);            
+            itemHtml = itemHtml.replace('%name%', obj.items[w].name);
+            itemHtml = itemHtml.replace('%quantity%', obj.items[w].quantity);
+            itemHtml = itemHtml.replace('%price%', obj.items[w].price);
+            itemHtml = itemHtml.replace('%total%', obj.items[w].total);   
             console.log('item html '+itemHtml);
+            document.querySelector(element).insertAdjacentHTML('beforeend', itemHtml);
+            }
             
             
-        //create a row
+        //write total
         
-            
+            document.querySelector(DOMstrings.totalField).textContent = obj.total;
+
 
             console.log('Done replacind fields');
             
             // Insert the HTML into the DOM            
-            document.querySelector(element).insertAdjacentHTML('beforeend', itemHtml);
         },
-        
-        
-        
-        
+
+        removeAllChildren: function(){
+            console.log('clearing GUI');
+            var nodeElement = DOMstrings.floatContainer;
+            // to remove all child nodes
+            document.querySelector(nodeElement).innerHTML='';
+            document.querySelector(DOMstrings.totalField).textContent ='0';
+
+        },  
         
         
     addListChild: function(obj)     { 
-
+//total = parseInt(document.querySelector(DOMstrings.totalField).value,);
+//obj.total
+console.log('total is'+obj.total);
 var html, newHtml, element;
             // Create HTML string with placeholder text
             
@@ -258,11 +322,16 @@ var html, newHtml, element;
      
     console.log(obj.items[0].quantity);
     console.log('items length :'+obj.items.length);
-
-
+console.log('8ta');
 
     //get the table
     var table = document.getElementById("tee");
+    
+    //get the total field
+    var total = document.getElementById("totalField");
+
+    //get itemnum
+    var num=obj.itemNum;
  
   for(var i=0; i<obj.items.length; i++){
     //create a row
@@ -270,39 +339,50 @@ var html, newHtml, element;
     
     // add td to row
     var td = tr.appendChild(document.createElement('td'));
+  
+
+ //   td.innerHTML = '<input type="hidden" name="itemId" value="'+obj.items[i].id+'">'+obj.items[i].id;
     
-    td.innerHTML = obj.items[i].id;
+//     var td = tr.appendChild(document.createElement('td'));
+    
+   td.innerHTML = '<input type="hidden" name="itemName" value="'+obj.items[i].name+'">'+obj.items[i].name;
     
      var td = tr.appendChild(document.createElement('td'));
     
-    td.innerHTML = obj.items[i].name;
-    
-     var td = tr.appendChild(document.createElement('td'));
-    
-    td.innerHTML = obj.items[i].quantity;
+    td.innerHTML = '<input type="hidden" name="itemQuantity" value="'+obj.items[i].quantity+'">'+obj.items[i].quantity;
 
      var td = tr.appendChild(document.createElement('td'));
     
-    td.innerHTML = obj.items[i].price;
+    td.innerHTML ='<input type="hidden" name="itemPrice" value="'+obj.items[i].price+'">'+ obj.items[i].price;
+//    var td = obj.items[i].total;
     
-    var td = obj.items[i].total;
-    
-    td.innerHTML = 'eta2';
+//    td.innerHTML = 'eta2';
+
+document.querySelector(DOMstrings.totalField).textContent = obj.total;
         
     console.log('sho');
     
-    table.appendChild(tr);
+    table.appendChild(tr);  
     };
-    
-    },
         
-        
-        getDOMstrings: function() {
+            
+
+},
+
+cleatInput: function(){
+    var fields = document.querySelectorAll(DOMstrings.inputQuant);
+    var fieldsArray = Array.prototype.slice.call(fields);
+    fieldsArray.forEach(function(current, index, array){
+        current.value = "";
+    }); 
+},
+
+ getDOMstrings: function() {
             return DOMstrings;
-        }
-    };
-    
-})();
+        }   
+    }
+    }
+            )();
 
 
 
@@ -343,7 +423,13 @@ var controller = (function(budgetCtrl, UICtrl) {
                 ctrlAddItem0();
             }
         });
-                
+
+        //Setup event listeners for delete buttons
+        document.querySelector(DOM.mother).addEventListener('click', myCtrlDeleteItem);
+       
+        //Setup event listener for clear button
+        document.querySelector(DOM.clearCart).addEventListener('click', clearShoppingCart);
+
     };
     
     
@@ -393,8 +479,11 @@ var controller = (function(budgetCtrl, UICtrl) {
         
         
         //3. Update UI
-        //UICtrl.addListItem(updatedCart);
-        UICtrl.addListChild(updatedCart);
+        UICtrl.addListItem(updatedCart);
+        //UICtrl.addListChild(updatedCart);
+
+        //4. Clear input fields
+        UICtrl.cleatInput();
         
         if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
         }
@@ -421,8 +510,11 @@ var controller = (function(budgetCtrl, UICtrl) {
         
         
         //3. Update UI
-        //UICtrl.addListItem(updatedCart);
-        UICtrl.addListChild(updatedCart);
+     UICtrl.addListItem(updatedCart);
+       //UICtrl.addListChild(updatedCart);
+
+        //4. Clear input fields
+        UICtrl.cleatInput();
         
         if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
         }
@@ -450,8 +542,11 @@ var controller = (function(budgetCtrl, UICtrl) {
         
         
         //3. Update UI
-        //UICtrl.addListItem(updatedCart);
-        UICtrl.addListChild(updatedCart);
+        UICtrl.addListItem(updatedCart);
+        //UICtrl.addListChild(updatedCart);
+
+        //4. Clear input fields
+        UICtrl.cleatInput();
         
         if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
         }
@@ -478,16 +573,49 @@ var controller = (function(budgetCtrl, UICtrl) {
         
         
         //3. Update UI
-        //UICtrl.addListItem(updatedCart);
-        UICtrl.addListChild(updatedCart);
+        UICtrl.addListItem(updatedCart);
+        //UICtrl.addListChild(updatedCart);
+
+        //4. Clear input fields
+        UICtrl.cleatInput();
         
         if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
         }
     };
 
 
+    var myCtrlDeleteItem = function(event){
 
-    
+        console.log('remove event parent node id id id: '+event.target.parentNode.parentNode.parentNode.id);
+        var itemID = event.target.parentNode.parentNode.parentNode.id;
+
+        //if item id is not empty
+        if(itemID){
+
+            console.log('3 times got id rrrrrrffffffff');
+
+            // Delete item from data structure
+            var it= budgetCtrl.getItemList();
+            console.log('cart size: '+it.length);
+            var updatedCartItems = budgetCtrl.deleteFromList(it, itemID);
+            console.log('adjective: '+updatedCartItems.length);
+            updatedCartItems.total = budgetCtrl.calculateTotal(updatedCartItems);
+            
+            //Delete item from GUI
+            UICtrl.addListItem(updatedCartItems);
+        }
+    };
+
+    var clearShoppingCart = function(){
+        console.log('now clearing cart');
+
+        // Clear Data Structure
+        budgetCtrl.removeAllData();
+
+        //Clear GUI
+        UICtrl.removeAllChildren();
+    };
+
     var ctrlDeleteItem = function(event) {
         var itemID, splitID, type, ID;
         
