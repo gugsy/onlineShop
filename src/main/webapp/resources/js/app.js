@@ -370,6 +370,7 @@ document.querySelector(DOMstrings.totalField).textContent = obj.total;
 },
 
 cleatInput: function(){
+    console.log('Now clearing input fields');
     var fields = document.querySelectorAll(DOMstrings.inputQuant);
     var fieldsArray = Array.prototype.slice.call(fields);
     fieldsArray.forEach(function(current, index, array){
@@ -482,9 +483,12 @@ var controller = (function(budgetCtrl, UICtrl) {
         UICtrl.addListItem(updatedCart);
         //UICtrl.addListChild(updatedCart);
 
+        console.log('just before clearing');
         //4. Clear input fields
         UICtrl.cleatInput();
-        
+        console.log('just after clearing');
+
+
         if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
         }
     };
@@ -513,9 +517,11 @@ var controller = (function(budgetCtrl, UICtrl) {
      UICtrl.addListItem(updatedCart);
        //UICtrl.addListChild(updatedCart);
 
+       console.log('just before clearing');
         //4. Clear input fields
         UICtrl.cleatInput();
-        
+        console.log('just after clearing');
+
         if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
         }
     };
@@ -545,8 +551,11 @@ var controller = (function(budgetCtrl, UICtrl) {
         UICtrl.addListItem(updatedCart);
         //UICtrl.addListChild(updatedCart);
 
+        console.log('just before clearing');
         //4. Clear input fields
         UICtrl.cleatInput();
+        console.log('just after clearing');
+
         
         if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
         }
@@ -576,8 +585,11 @@ var controller = (function(budgetCtrl, UICtrl) {
         UICtrl.addListItem(updatedCart);
         //UICtrl.addListChild(updatedCart);
 
+        console.log('just before clearing');
         //4. Clear input fields
         UICtrl.cleatInput();
+        console.log('just after clearing');
+
         
         if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
         }
