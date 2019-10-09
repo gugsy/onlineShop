@@ -659,28 +659,19 @@ public ModelAndView checkTransaction(ModelAndView model, HttpServletRequest req)
 
             if (status.paid()) {
                 System.out.println("Payment Succeeded");
-                model.addObject("response",status);
-                model.setViewName("return_page.jsp");              
-                
-                // Yay! Transaction was paid for
-            } else {
                 int amount=0;
                 String paynowref="";
-                System.out.println("Payment Failed. Why you no pay?");
                 amount=status.getAmount().intValue();
                 paynowref=status.getPaynowReference();
                 model.addObject("amount",amount);
                 model.addObject("paynowref",paynowref);
                 model.addObject("state", status);
-               /* model.addObject("reference",status.getMerchantReference());
-                model.addObject("paynowreference",status.getPaynowReference());
-                model.addObject("status",status.getStatus());
-                model.addObject("pollurl",status.getAmount());
-                model.addObject("hash",status.getRawResponseContent());*/
-
-
                 model.setViewName("return_page.jsp");              
-                //model.setViewName("payment_failed.jsp");
+                
+                // Yay! Transaction was paid for
+            } else {
+                System.out.println("Payment Failed. Why you no pay?");            
+                model.setViewName("payment_failed.jsp");
             }
             
             return model;
