@@ -142,6 +142,29 @@ finally {
             }
         }
     }
+    
+    
+    public List<Users> selectAllUsers(){
+        
+        List<Users> us = new ArrayList<>();
+        EntityManager em =pu.getEntityManager();
+        
+        try{
+        
+           em.getTransaction().begin();
+           Query  query = em.createNamedQuery("Users.findAll");
+           us=query.getResultList();
+            
+        }
+        catch(Exception e){
+            
+            e.printStackTrace();
+        
+        
+        
+        }
+    return us;
+    }
 
     public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = pu.getEntityManager();
