@@ -8,6 +8,7 @@ package com.furniture.controllers;
 import com.furniture.config.PersitenceUnit;
 import com.furniture.controllers.exceptions.NonexistentEntityException;
 import com.furniture.entities.Products;
+import com.furniture.entities.Users;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,44 @@ public class ProductsJpaController implements Serializable {
         return results;
     }    
     
+    //////
+ 
+  public void updateRate(Float rate){
+    
+        EntityManager em = pu.getEntityManager();
+        List<Products>  ps = selectAll();
+        for(Products prod: ps){
+        em.getTransaction().begin();
+        prod.setRate(rate);
+        em.merge(prod);
+        em.getTransaction().commit();
+        }
+        em.close();       
+       
+    }
+
+    
+    
+    
+    
+    /////
+
+    public List<Users> selectAllUsers() {
+        EntityManager em = pu.getEntityManager();
+         List<Users> results= new ArrayList();
+        try {
+            em.getTransaction().begin();
+            Query query = em.createNamedQuery("Users.findAll");
+             results = query.getResultList();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return results;
+    }  
+
+    
     public void create(List<Products> products) {
         EntityManager em = pu.getEntityManager();
         try {
@@ -58,6 +97,28 @@ public class ProductsJpaController implements Serializable {
                 em.close();
             }
         }
+    }
+    public int insertProduct(Products prod){
+                       EntityManager em = pu.getEntityManager();
+        Query query = em.createNativeQuery("INSERT INTO Products (description, price, productName, quantity, rate) VALUES (?, ?, ?, ?, ?)");
+query.setParameter(1, prod.getDescription());
+query.setParameter(2, prod.getPrice());
+query.setParameter(3, prod.getProductName());
+query.setParameter(4, prod.getQuantity());
+query.setParameter(5, prod.getRate());
+
+try{
+    em.getTransaction().begin();
+    query.executeUpdate();
+    em.getTransaction().commit();
+    }
+        
+finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return 0;
     }
 
     public void edit(Products products) throws NonexistentEntityException, Exception {
@@ -134,7 +195,7 @@ public class ProductsJpaController implements Serializable {
             em.close();
         }
     }
-
+  
     public int getProductsCount() {
         EntityManager em = pu.getEntityManager();
         try {
