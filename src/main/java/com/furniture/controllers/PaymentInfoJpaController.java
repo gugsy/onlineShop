@@ -8,6 +8,7 @@ package com.furniture.controllers;
 import com.furniture.controllers.ProductsJpaController.BaseDao;
 import com.furniture.controllers.exceptions.NonexistentEntityException;
 import com.furniture.entities.PaymentInfo;
+import com.furniture.entities.Products;
 import com.furniture.models.SendMail;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -80,23 +81,21 @@ public class PaymentInfoJpaController implements Serializable {
     
     return pi;
     }
-/*
-    public void edit(List<PaymentInfo> paymentInfo) throws NonexistentEntityException, Exception {
+
+
+    public void edit(PaymentInfo paymentInfo) throws NonexistentEntityException, Exception {
         EntityManager em = pu.getEntityManager();
         try {
-           
-            for(PaymentInfo p : paymentInfo){
             em.getTransaction().begin();
-            p = (PaymentInfo) em.merge(paymentInfo);
-            
-            }
+            paymentInfo = em.merge(paymentInfo);
             em.getTransaction().commit();
+            System.out.println("written poll url to db");
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = paymentInfo.get(0);
+                Integer id = paymentInfo.getId();
                 if (findPaymentInfo(id) == null) {
-                    throw new NonexistentEntityException("The paymentInfo with id " + id + " no longer exists.");
+                    throw new NonexistentEntityException("The products with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -106,11 +105,11 @@ public class PaymentInfoJpaController implements Serializable {
             }
         }
     }
-/*
+    
+
     public void destroy(Integer id) throws NonexistentEntityException {
-        EntityManager em = null;
+        EntityManager em = pu.getEntityManager();
         try {
-            em = getEntityManager();
             em.getTransaction().begin();
             PaymentInfo paymentInfo;
             try {
@@ -127,17 +126,17 @@ public class PaymentInfoJpaController implements Serializable {
             }
         }
     }
-*/
- /*   public List<PaymentInfo> findPaymentInfoEntities() {
+
+    public List<PaymentInfo> findPaymentInfoEntities() {
         return findPaymentInfoEntities(true, -1, -1);
     }
 
     public List<PaymentInfo> findPaymentInfoEntities(int maxResults, int firstResult) {
         return findPaymentInfoEntities(false, maxResults, firstResult);
     }
-/*
+
     private List<PaymentInfo> findPaymentInfoEntities(boolean all, int maxResults, int firstResult) {
-        EntityManager em = getEntityManager();
+        EntityManager em = pu.getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(PaymentInfo.class));
@@ -153,7 +152,7 @@ public class PaymentInfoJpaController implements Serializable {
     }
 
     public PaymentInfo findPaymentInfo(Integer id) {
-        EntityManager em = getEntityManager();
+        EntityManager em = pu.getEntityManager();
         try {
             return em.find(PaymentInfo.class, id);
         } finally {
@@ -162,7 +161,7 @@ public class PaymentInfoJpaController implements Serializable {
     }
 
     public int getPaymentInfoCount() {
-        EntityManager em = getEntityManager();
+        EntityManager em = pu.getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             Root<PaymentInfo> rt = cq.from(PaymentInfo.class);
@@ -173,7 +172,7 @@ public class PaymentInfoJpaController implements Serializable {
             em.close();
         }
     }
-    */
+    
     
         public class BaseDao {
     private static final String PERSISTENCE_UNIT_NAME = "com.furniture_SNAPSHOTPU";
@@ -186,3 +185,4 @@ public class PaymentInfoJpaController implements Serializable {
 }
     
 }
+

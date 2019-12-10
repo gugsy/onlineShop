@@ -31,7 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Products.findByProductName", query = "SELECT p FROM Products p WHERE p.productName = :productName")
     , @NamedQuery(name = "Products.findByQuantity", query = "SELECT p FROM Products p WHERE p.quantity = :quantity")
     , @NamedQuery(name = "Products.findByDescription", query = "SELECT p FROM Products p WHERE p.description = :description")
-    , @NamedQuery(name = "Products.findByPrice", query = "SELECT p FROM Products p WHERE p.price = :price")})
+    , @NamedQuery(name = "Products.findByPrice", query = "SELECT p FROM Products p WHERE p.price = :price")
+    , @NamedQuery(name = "Products.findByRate", query = "SELECT p FROM Products p WHERE p.rate = :rate")
+    , @NamedQuery(name = "Products.findByZwlprice", query = "SELECT p FROM Products p WHERE p.zwlprice = :zwlprice")})
 public class Products implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,6 +52,11 @@ public class Products implements Serializable {
     private String description;
     @Column(name = "price")
     private Integer price;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "rate")
+    private Float rate;
+    @Column(name = "zwlprice")
+    private Float zwlprice;
 
     public Products() {
     }
@@ -96,6 +103,22 @@ public class Products implements Serializable {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Float getRate() {
+        return rate;
+    }
+
+    public void setRate(Float rate) {
+        this.rate = rate;
+    }
+
+    public Float getZwlprice() {
+        return zwlprice;
+    }
+
+    public void setZwlprice(Float zwlprice) {
+        this.zwlprice = zwlprice;
     }
 
     @Override

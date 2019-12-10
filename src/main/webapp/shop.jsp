@@ -28,7 +28,7 @@
 		<script type="text/javascript" src="resources/js/jquery.shop.js"></script>
 		<link rel="stylesheet" type="text/css" href="resources/css/style-services.css">		
     <!-- Title  -->
-    <title>Amado - Furniture Ecommerce Template | Shop</title>
+    <title>Smart Store</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="resources/img/core-img/favicon.ico">
@@ -93,7 +93,7 @@ $(function() { // document ready
             
                                   
             <div class="shopLogo">
-                        <img src="resources/img/core-img/logo.png" alt="">
+                        <img src="resources/img/core-img/smart.jpg" alt="">
 
             </div>
               <!-- cart start-->
@@ -140,7 +140,7 @@ $(function() { // document ready
                     <!-- Single Form Check -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="amado">
-                        <label class="form-check-label" for="amado">Amado</label>
+                        <label class="form-check-label" for="amado">Shop Smart</label>
                     </div>
                     <!-- Single Form Check -->
                     <div class="form-check">
@@ -150,7 +150,7 @@ $(function() { // document ready
                     <!-- Single Form Check -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="furniture">
-                        <label class="form-check-label" for="furniture">Furniture Inc</label>
+                        <label class="form-check-label" for="furniture">Shop Inc</label>
                     </div>
                     <!-- Single Form Check -->
                     <div class="form-check">
@@ -264,18 +264,21 @@ $(function() { // document ready
                             <!-- Product Image -->
                             <div class="product-img">
                                 <c:choose>
-                                    <c:when test="${name=='chair'}">
-                                <img src="resources/img/chair.jpg" alt="kkk">
+                                    <c:when test="${name=='cushions'}">
+                                <img src="resources/img/bg-img/1.jpg" alt="kkk">
+                                <img class="hover-img" src="resources/img/bg-img/1.jpg" alt="">
                                      </c:when>
-                                     <c:when test="${name=='table'}">
-                                <img src="resources/img/table.jpg" alt="">
+                                     <c:when test="${name=='shoes'}">
+                                <img src="resources/img/bg-img/2.jpg" alt="">
+                                <img class="hover-img" src="resources/img/bg-img/2.jpg" alt="">
                                      </c:when>
-                                    <c:when test="${name=='tvstand'}">
-                                <img src="resources/img/tvstand.jpg" alt="">
+                                    <c:when test="${name=='bags'}">
+                                <img src="resources/img/bg-img/3.jpg" alt="">
+                                <img class="hover-img" src="resources/img/bg-img/3.jpg" alt="">
                                      </c:when>
                                 </c:choose>
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="resources/img/product2.jpg" alt="">
+                                
                             </div>
 
                             <!-- Product Description -->
@@ -418,28 +421,6 @@ $(function() { // document ready
     <!-- ##### Main Content Wrapper End ##### -->
 
     <!-- ##### Newsletter Area Start ##### -->
-    <section class="newsletter-area section-padding-100-0">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Newsletter Text -->
-                <div class="col-12 col-lg-6 col-xl-7">
-                    <div class="newsletter-text mb-100">
-                        <h2>Subscribe for a <span>25% Discount</span></h2>
-                        <p>Nulla ac convallis lorem, eget euismod nisl. Donec in libero sit amet mi vulputate consectetur. Donec auctor interdum purus, ac finibus massa bibendum nec.</p>
-                    </div>
-                </div>
-                <!-- Newsletter Form -->
-                <div class="col-12 col-lg-6 col-xl-5">
-                    <div class="newsletter-form mb-100">
-                        <form action="#" method="post">
-                            <input type="email" name="email" class="nl-email" placeholder="Your E-mail">
-                            <input type="submit" value="Subscribe">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- ##### Newsletter Area End ##### -->
     
 
@@ -453,11 +434,11 @@ $(function() { // document ready
                     <div class="single_widget_area">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="indexf.html"><img src="resources/img/core-img/logo2.png" alt=""></a>
+                            <a href="indexf.html"><img src="resources/img/core-img/paypal.png" alt=""></a>
                         </div>
                         <!-- Copywrite Text -->
                         <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> & Re-distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank"></a> & Re-distributed by <a href="https://themewagon.com/" target="_blank"></a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                 </div>

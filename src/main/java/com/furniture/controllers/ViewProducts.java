@@ -37,6 +37,17 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.furniture.entities.PaymentInfo;
+
+//upload imports
+import java.io.*;
+import java.util.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import org.apache.commons.fileupload.*;
+import org.apache.commons.fileupload.disk.*;
+import org.apache.commons.fileupload.servlet.*;
+import org.apache.commons.io.output.*;
+import org.springframework.web.bind.annotation.RequestParam;
 /**
  *
  * @author gugulethu.ngwenya
@@ -50,6 +61,7 @@ public class ViewProducts {
         ProductsJpaController pj = new ProductsJpaController();
        
         List<Products> p = pj.selectAll();
+        
         model.setViewName("shop.jsp");
         model.addObject( "products",p);
         model.addObject( "sizo",p.size());
@@ -84,6 +96,30 @@ public class ViewProducts {
        
         model.setViewName("editItem.jsp");
         model.addObject( "item",prod);
+        
+    return model;
+    
+    } 
+
+  @RequestMapping(value="/addNew", method = RequestMethod.POST)  
+ public ModelAndView addNew(ModelAndView model, HttpServletRequest request,HttpServletResponse response){
+
+    System.out.println("adding item");
+    ProductsJpaController pj = new ProductsJpaController();
+    Products prod = new Products();
+    
+    prod.setProductName(request.getParameter("itemName"));
+    prod.setPrice(Integer.parseInt(request.getParameter("itemPrice")));
+    prod.setDescription(request.getParameter("itemDescr"));
+    prod.setQuantity(Integer.parseInt(request.getParameter("itemQuantity")));
+    prod.setRate(Float.parseFloat(request.getParameter("Rate")));
+    
+    pj.insertProduct(prod);
+       
+    List<Products> p = pj.selectAll();
+    model.setViewName("shop_2.jsp");
+    model.addObject( "products",p);
+    model.addObject( "sizo",p.size());
         
     return model;
     
@@ -549,8 +585,8 @@ public ModelAndView processUpdate(ModelAndView model,HttpServletRequest request,
 }        
   
 
-        String INTEGRATION_ID="8382";
-    String INTEGRATION_KEY="ae0d2249-4693-4da1-a2e6-102685b31038";
+        String INTEGRATION_ID="8362";
+    String INTEGRATION_KEY="617b8c55-9ec9-4e58-ad3e-a0702612f52d";
    
     Paynow paynow = new Paynow(INTEGRATION_ID, INTEGRATION_KEY);
     String pollUrl= new String();
@@ -570,13 +606,13 @@ HttpSession session1 = request.getSession(false);
 
 
         Payment payment = paynow.createPayment("Invoice 35",email);
-        paynow.setResultUrl("http://localhost:8080/onlineShop/returnPage?id="+id); //post on merchant website
-        paynow.setReturnUrl("http://localhost:8080/onlineShop/returnPage?id="+id); //result page for customer
+        paynow.setResultUrl("http://localhost:8084/onlineShop/returnPage?id="+id); //post on merchant website
+        paynow.setReturnUrl("http://localhost:8084/onlineShop/returnPage?id="+id); //result page for customer
 
         // Passing in the name of the item and the price of the item
         for(Products item: cart){
             
-        double itemTotalPrice=item.getPrice()*item.getQuantity();
+        double itemTotalPrice=item.getZwlprice()*item.getQuantity();
         payment.add(item.getProductName(), itemTotalPrice);
       //  payment
         }
@@ -642,13 +678,13 @@ response1.sendRedirect(targetURL);
 
 
  @RequestMapping(value="/returnPage", method = RequestMethod.GET)  
-public ModelAndView checkTransaction(ModelAndView model, HttpServletRequest req){
+public ModelAndView checkTransaction(ModelAndView model, HttpServletRequest req,@RequestParam int id){
 /*
     private final String merchantReference;
     private final String paynowReference;
     private final BigDecimal amount;
     private final boolean paid;*/
-            int id= Integer.parseInt(req.getParameter("id"));
+            id= Integer.parseInt(req.getParameter("id"));
             
             //find transaction by id
             PaymentInfoJpaController cc = new PaymentInfoJpaController();
@@ -665,7 +701,7 @@ public ModelAndView checkTransaction(ModelAndView model, HttpServletRequest req)
                 paynowref=status.getPaynowReference();
                 model.addObject("amount",amount);
                 model.addObject("paynowref",paynowref);
-                model.addObject("state", status);
+                model.addObject("state", status.paid());
                 model.setViewName("return_page.jsp");              
                 
                 // Yay! Transaction was paid for
@@ -682,3 +718,4 @@ public ModelAndView checkTransaction(ModelAndView model, HttpServletRequest req)
 
 
 }
+
