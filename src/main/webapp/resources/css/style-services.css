@@ -64,6 +64,7 @@ header {
     position: fixed;
     margin: 16px 36px;
 }
+<<<<<<< HEAD
 .shopLogo{
     padding-left: 100px;
     padding-top: 10px;
@@ -564,5 +565,481 @@ background-image:url("img/1.jpg");
 }
 
  
+=======
+
+.logo img {
+    height: 6em;
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    transition: 1s;
+}
+
+nav.black ul {
+    background: #000;
+}
+
+nav ul li {
+    display: inline-block;
+
+    margin: 50px 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+
+
+}
+
+.menu-icon {
+    width: 100%;
+    background: #000;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    cursor: pointer;
+    color: #fff;
+    display: none;
+    margin: 25px 10px;
+}
+
+ul a:hover {
+    color: #00bff3;
+}
+
+.active {
+    color: #00bff3;
+}
+
+
+
+#navbar {
+    overflow: hidden;
+    background-color: black;
+    opacity: .9;
+}
+
+/* Navbar links */
+#navbar a {
+    display: block;
+    text-decoration: none;
+
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky+.content {
+    padding-top: 70px;
+}
+
+
+/*MEDIA QUERIES FOR MENU*/
+
+@media(max-width:900px) {
+    .logo {
+        position: fixed;
+        top: 0;
+        margin: 10px;
+
+    }
+
+    .menu {
+        float: none;
+
+    }
+
+    nav ul {
+        max-height: 0px;
+        background: #000;
+    }
+
+    nav.black ul {
+        background: #000;
+    }
+
+    .showing {
+        max-height: 21em;
+    }
+
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        background: black;
+        margin: 5px;
+
+
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
+
+#footer{
+	width:100%;
+}
+
+
+
+
+/*FOOTER*/
+
+
+footer p {
+    color: white;
+    padding: 10px 5px;
+    text-align: center;
+}
+
+footer a {
+    display: block;
+    padding: 10px;
+}
+
+#footer {
+    padding: 40px;
+    background-color: black;
+    height: 40%;
+    text-align: center;
+	clear: both;
+    position: relative;
+    margin-top: 10px; ;
+}
+
+#social {
+    display: inline-block;
+    margin: 30px;
+}
+
+.products{
+	margin-top:20px;
+}
+
+#products ul {
+	margin: 1.5em 0;
+	padding: 0;
+	list-style: none;
+	overflow: ;
+}
+
+#products li {
+	float: left;
+	width: 31%;
+	margin: 0 1%;
+	display: block;
+}
+
+.product-image {
+	margin: 0 auto 1em auto;
+	background: #000;
+	height:100%;
+	overflow: hidden;
+	border-radius:;
+	display:block;
+	
+}
+
+.product-name {
+	text-align: center;
+	margin: 0;
+	font-size: 1.4em;
+	padding-bottom: 0.2em;
+	border-bottom: 1px solid white;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.product-price {
+	
+	font-size: 2em;
+	text-align: center;
+	margin: 1em auto;
+	color: white;
+
+}
+
+form.add-to-cart div,
+form.add-to-cart p {
+	text-align: center;
+}
+
+form input.qty {
+	width: 40px;
+	border: 1px solid #eee;
+	color: #000;
+	border-radius: 3px;
+	margin-left: 0.4em;
+}
+
+.btn, a.btn {
+	display: inline-block;
+	background: #00bff3;
+	color: white;
+
+	padding: 0.3em 1em;
+	text-align: center;
+	border-radius: 4px;
+	
+}
+
+
+
+
+body#checkout-page #site-info {
+	position: static;
+}
+
+#shopping-cart {
+	margin: 1.5em 0;
+}
+
+.shopping-cart {
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.shopping-cart th {
+	font-size: 1.3em;
+	padding: 0.3em;
+	width: 30%;
+	border: 2px solid #ddd;
+	text-transform: uppercase;
+}
+
+.shopping-cart td {
+	padding: 0.3em;
+	width: 33.3%;
+	border: 1px solid #ddd;
+}
+
+
+.shopping-cart td.pdelete {
+	text-align: center;
+}
+
+.pdelete a,
+.pdelete a:hover {
+	color: #c00;
+	text-decoration: none;
+	font-size: 2.5em;
+	display: block;
+	text-align: center;
+}
+
+#shopping-cart-actions {
+	margin: 1.5em 0;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+#shopping-cart-actions li {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+#pricing {
+	padding: 0.5em;
+	margin: 1em 0;
+	background: black;
+}
+
+#sub-total, #shipping {
+	margin: 1.5em 0;
+	text-align: right;
+}
+
+#sub-total span,
+#shipping span {
+	margin-left: 1em;
+}
+
+#content > h1,
+#checkout-order-form h2 {
+	font-size: 2em;
+	text-align: center;
+}
+
+#pricing #sub-total,
+#pricing #shipping {
+	margin: 1em 0;
+}
+
+#checkout-order-form {
+	margin: 1.5em 0;
+}
+
+#checkout-order-form fieldset {
+	border: 1px solid white;
+	border-radius: 6px;
+	padding: 1em;
+	margin-bottom: 1.3em;
+}
+
+#checkout-order-form legend {
+	padding: 0.3em;
+	background: #00bff3;
+	font-weight: bold;
+}
+
+#checkout-order-form div {
+	margin-bottom: 1em;
+}
+
+#checkout-order-form label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 0.3em;
+	text-align: left;
+}
+
+#checkout-order-form input[type="text"] {
+	width: 100%;
+	display: block;
+	background: #fff;
+	border: 1px solid #00bff3;
+	border-radius: 4px;
+	padding: 0.3em;
+}
+
+#checkout-order-form select {
+	width: 100%;
+	display: block;
+}
+
+.message {
+	display: block;
+	margin: 0.5em 0;
+	color: red;
+}
+
+#user-details {
+	margin: 1.5em 0;
+}
+
+#user-details > h2 {
+	text-align: center;
+	font-size: 2em;
+}
+
+#user-details-content {
+	margin: 1.5em 0;
+	padding: 1em;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+#user-details-content .detail {
+	float: left;
+	width: 46%;
+}
+
+#user-details-content .detail.right {
+	float: right;
+}
+
+#user-details-content .detail > h2 {
+	text-align: center;
+	font-size: 1.6em;
+	margin-bottom: 0.5em;
+}
+
+#user-details-content ul {
+	margin: 0 0 1em 0;
+	padding: 0;
+	list-style: none;
+}
+
+#user-details-content li {
+	display: block;
+	margin-bottom: 0.5em;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid #ddd;
+}
+
+
+
+#paypal-form {
+	margin: 1.5em 0;
+}
+
+#content{
+	margin-top:em;
+	
+}
+#site {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 1em;
+}
+
+.product-image img{
+	width:100%;
+}
+
+/*For Jumbotron*/
+.jumbotron{
+	padding:100px;
+}
+.jumbotron {
+  background-image: url("../img/scissors.jpg");
+  background-size: cover;
+  background-position:center;
+}
+.display-4{
+	font-weight: bold;
+	font-size:8vw;
+}
+
+/*End Jumbotron*/
+
+#pricelist{
+max-width:960px;
+margin: 0 auto;
+background-image:url("img/1.jpg");
+}
+
+#pricelist img{
+	width:50%;
+	margin:5% 25%;
+	display:block;
+}
+
+#products h2{
+	margin:40px;
+	position:center;
+	text-align:center;
+	
+}
+
+
+>>>>>>> origin/master
 
 

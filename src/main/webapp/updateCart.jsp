@@ -136,13 +136,13 @@
                                  
                                         <td class="cart_product_img">
                                                                            <c:choose>
-                                    <c:when test="${name=='chair'}">
+                                    <c:when test="${name=="chair"}">
                                 <img src="resources/img/chair.jpg" alt="kkk">
                                      </c:when>
-                                     <c:when test="${name=='table'}">
+                                     <c:when test="${name=="table"}">
                                 <img src="resources/img/table.jpg" alt="">
                                      </c:when>
-                                    <c:when test="${name=='tvstand'}">
+                                    <c:when test="${name=="tvstand"}">
                                 <img src="resources/img/tvstand.jpg" alt="">
                                      </c:when>
                                 </c:choose>
